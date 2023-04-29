@@ -90,6 +90,40 @@ const data = [
   }
 ];
 
+function articleMaker(article){
+  const article1 = document.createElement('div');
+  article1.classList.add('article');
+ 
+  const name = document.createElement('h2');
+  name.textContent = article.name;
+  article1.appendChild(title);
+  
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('date');
+  paragraph.textContent = article.paragraph;
+  article1.appendChild(paragraph)
+  
+  for(let i=0; i< article.paragraphs.length; i++){
+      const paragraph2 = document.createElement('p');
+      article1.appendChild(paragraph2);
+  }
+
+ 
+  const expand = document.createElement('span');
+  expand.classList.add('expandButton');
+  expandButton.textContent = '+';
+  expand.addEventListener('click', () => {
+      article1.classList.toggle('article-open');
+  });
+  article1.appendChild(expand);
+
+  return article1; 
+}
+/*data.forEach(article => {
+  document.querySelector('div.articles')/appendChild(articleMaker(article));
+
+})
+*/
 /*
   
 
