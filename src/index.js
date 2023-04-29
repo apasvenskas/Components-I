@@ -4,17 +4,30 @@ import './components/menu/menu.js'
 
 function articleMaker(title){
     const article = document.createElement('div');
-    article.classList.add(article);
-    const name = document.createElement(h2);
-    name.textContent.add(title);
-    const paragraph = document.createElement(p);
-    paragraph.classList.add(date);
-    paragraph.textContent.add('date of the article');
-    const expand = document.createElement(span);
-    expand.classList(expandButton);
-    expand.addEventListener('click', (event) => {
-        expand('the button cliked expands')
-    })
+    article.classList.add('article');
+   
+    const name = document.createElement('h2');
+    name.textContent = article.name;
+    article.appendChild(title);
+    
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('date');
+    paragraph.textContent = article.paragraph;
+    article.appendChild(paragraph)
+    
+    for(let i=0; i< article.paragraphs.length; i++){
+        const paragraph2 = document.createElement('p');
+        article.appendChild(paragraph2);
+    }
 
-    return articleMaker; 
+   
+    const expand = document.createElement('span');
+    expand.classList.add('expandButton');
+    expandButton.textContent = '+';
+    expand.addEventListener('click', () => {
+        article.classList.toggle('article-open');
+    });
+    article.appendChild(expand);
+
+    return article; 
 }
