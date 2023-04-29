@@ -90,40 +90,44 @@ const data = [
   }
 ];
 
-function articleMaker(article){
-  const article1 = document.createElement('div');
-  article1.classList.add('article');
- 
-  const name = document.createElement('h2');
-  name.textContent = article.name;
-  article1.appendChild(title);
-  
-  const paragraph = document.createElement('p');
-  paragraph.classList.add('date');
-  paragraph.textContent = article.paragraph;
-  article1.appendChild(paragraph)
-  
-  for(let i=0; i< article.paragraphs.length; i++){
-      const paragraph2 = document.createElement('p');
-      article1.appendChild(paragraph2);
-  }
+function articleMaker(articleObj){
+  const articleWrapper = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleParagraph1 = document.createElement('p');
+  const articleParagraph2 = document.createElement('p');
+  const articleParagraph3 = document.createElement('p');
+  const expandButton = document.createElement('span');
 
- 
-  const expand = document.createElement('span');
-  expand.classList.add('expandButton');
-  expandButton.textContent = '+';
-  expand.addEventListener('click', () => {
-      article1.classList.toggle('article-open');
-  });
-  article1.appendChild(expand);
+  articleWrapper.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton'); 
 
-  return article1; 
+  articleWrapper.appendChild(articleTitle);
+  articleWrapper.appendChild(articleDate);
+  articleWrapper.appendChild(articleParagraph1);
+  articleWrapper.appendChild(articleParagraph2);
+  articleWrapper.appendChild(articleParagraph3);
+  articleWrapper.appendChild(expandButton); 
+
+  articleTitle.textContent = articleObj.title;
+  articleDate.textContent = articleObj.date;
+  articleParagraph1.textContent = articleObj.oneParagraph;
+  articleParagraph2.textContent = articleObj.twoParagraph;
+  articleParagraph3.textContent = articleObj.threeParagraph;
+  expandButton.textContent = "+";
+
+  expandButton.addEventListener('click', () => {
+    articleWrapper.classList.toggle('article-open');
+  })
+  return articleWrapper;
 }
-/*data.forEach(article => {
-  document.querySelector('div.articles')/appendChild(articleMaker(article));
 
+data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article));
 })
-*/
+ 
+
 /*
   
 
